@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script>
+
+            function myFunction() {
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        document.getElementById("my-demo").innerHTML = this.responseText;
+
+                    }
+
+                };
+                xhttp.open("GET", "https://nhjevg15fi.execute-api.us-east-2.amazonaws.com/prod/sendMessageJava?message=" + document.getElementById("message").value 
+                + "&ph1=" + document.getElementById("ph1").value + "&ph2=" + document.getElementById("ph2").value + "&ph3=" + document.getElementById("ph3").value
+                , true);
+                xhttp.send();
+                //https://nhjevg15fi.execute-api.us-east-2.amazonaws.com/prod/sendMessageJava -> API link w/o parameters
+                //https://nhjevg15fi.execute-api.us-east-2.amazonaws.com/prod/sendMessageJava?message=Hi&ph1=1&ph2=2&ph3=3 -> API link example w/ parameters
+            }
+
+        </script>
+    </head>
+    <body>
+        <div align="left">
+
+            <h3><span id="my-demo">Send a message to phone numbers</span></h3>
+            <form>
+
+                <p>Enter a message:</p>
+                <p><input id="message" type="text" placeholder="Enter message here"></p>
+
+                <p>Enter phone numbers:</p>
+                <p><input id="ph1" type="text" placeholder="Enter phone number here"></p>
+                <p><input id="ph2" type="text" placeholder="Enter phone number here"></p>
+                <p><input id="ph3" type="text" placeholder="Enter phone number here"></p>
+
+
+            </form>
+            <button onclick="myFunction()">Click me to send message</button><br>
+            
+        </div>
+    </body>
+</html>
